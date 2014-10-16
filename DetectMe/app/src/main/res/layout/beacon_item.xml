@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp">
+
+    <TextView
+        style="@style/TextViewDefault"
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/in_out"
+        android:text="Name: Test Beacon"/>
+
+    <TextView
+        style="@style/TextViewDefault"
+        android:id="@+id/in_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignBaseline="@+id/name"
+        android:text="In"/>
+
+    <TextView
+        style="@style/TextViewDefault"
+        android:id="@+id/major"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/proximity"
+        android:layout_below="@+id/name"
+        android:text="Major: 100"/>
+
+    <TextView
+        style="@style/TextViewDefault"
+        android:id="@+id/proximity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/in_out"
+        android:layout_alignBaseline="@+id/major"
+        android:text="Immediate"/>
+
+    <TextView
+        style="@style/TextViewDefault"
+        android:id="@+id/minor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/major"
+        android:text="Minor: 2"/>
+
+    <TextView
+        style="@style/TextViewDefault"
+        android:id="@+id/uuid_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/minor"
+        android:text="@string/uuid_label"/>
+
+    <TextView
+        style="@style/TextViewDefault"
+        android:id="@+id/uuid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/uuid_label"
+        android:textColor="@android:color/darker_gray"/>
+</RelativeLayout>
