@@ -72,7 +72,7 @@ public class EditBeaconFragment extends Fragment implements Callback<Beacon> {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        getActivity().setTitle(R.string.edit_beacon);
+        getActivity().getActionBar().setTitle(R.string.edit_beacon);
         if(getArguments() != null && getArguments().containsKey(ARG_BEACON) && getArguments().containsKey(ARG_BEACON_ID)) {
             beaconId = getArguments().getLong(ARG_BEACON_ID);
             beacon = Parcels.unwrap(getArguments().getParcelable(ARG_BEACON));
