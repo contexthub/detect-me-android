@@ -35,4 +35,5 @@
     <string name="immediate">Immediate</string>
     <string name="near">Near</string>
     <string name="far">Far</string>
+    <string name="contexthub_url">http://contexthub.com</string>
 </resources>
