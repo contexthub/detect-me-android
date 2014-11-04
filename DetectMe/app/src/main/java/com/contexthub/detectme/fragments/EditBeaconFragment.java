@@ -121,8 +121,15 @@ public class EditBeaconFragment extends Fragment implements Callback<Beacon> {
         if(!isValid()) return;
 
         beacon.setName(name.getText().toString());
-        beacon.setMajor(Long.parseLong(major.getText().toString()));
-        beacon.setMinor(Long.parseLong(minor.getText().toString()));
+
+        if(!TextUtils.isEmpty(major.getText().toString())) {
+            beacon.setMajor(Long.parseLong(major.getText().toString()));
+        }
+
+        if(!TextUtils.isEmpty(minor.getText().toString())) {
+            beacon.setMinor(Long.parseLong(minor.getText().toString()));
+        }
+
         beacon.setUuid(uuid.getText().toString());
 
         getActivity().setProgressBarIndeterminateVisibility(true);
