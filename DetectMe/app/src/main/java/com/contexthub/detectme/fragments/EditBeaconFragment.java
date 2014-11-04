@@ -21,8 +21,6 @@ import com.chaione.contexthub.sdk.callbacks.Callback;
 import com.chaione.contexthub.sdk.model.Beacon;
 import com.contexthub.detectme.R;
 
-import org.parceler.Parcels;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -50,7 +48,7 @@ public class EditBeaconFragment extends Fragment implements Callback<Beacon> {
         if(beacon != null) {
             Bundle args = new Bundle();
             args.putLong(ARG_BEACON_ID, beacon.getId());
-            args.putParcelable(ARG_BEACON, Parcels.wrap(beacon));
+            args.putParcelable(ARG_BEACON, beacon);
             fragment.setArguments(args);
         }
         return fragment;
