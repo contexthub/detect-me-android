@@ -32,6 +32,7 @@
     <string name="minor">Minor</string>
     <string name="name_required">Name is required</string>
     <string name="uuid_required">UUID is required</string>
+    <string name="uuid_invalid">UUID is invalid</string>
     <string name="beacons">Beacons</string>
     <string name="immediate">Immediate</string>
     <string name="near">Near</string>

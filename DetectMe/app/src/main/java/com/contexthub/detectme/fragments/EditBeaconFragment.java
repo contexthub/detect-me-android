@@ -25,6 +25,7 @@ import com.contexthub.detectme.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.UUID;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -101,6 +102,7 @@ public class EditBeaconFragment extends Fragment implements Callback<Beacon> {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+                hideSoftKeyboard();
                 getFragmentManager().popBackStack();
                 return true;
             case R.id.action_save:
@@ -154,10 +156,19 @@ public class EditBeaconFragment extends Fragment implements Callback<Beacon> {
             name.setError(getString(R.string.name_required));
             isValid = false;
         }
+
+        try {
+            UUID.fromString(uuid.getText().toString());
+        }
+        catch (Exception e) {
+            uuid.setError(getString(R.string.uuid_invalid));
+            isValid = false;
+        }
         if(TextUtils.isEmpty(uuid.getText())) {
             uuid.setError(getString(R.string.uuid_required));
             isValid = false;
         }
+
         return isValid;
     }
 
