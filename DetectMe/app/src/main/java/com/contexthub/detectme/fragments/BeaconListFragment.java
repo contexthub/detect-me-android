@@ -94,12 +94,16 @@ public class BeaconListFragment extends Fragment implements Callback<List<Beacon
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         ((ActionBarActivity) getActivity()).getSupportActionBar().setTitle(R.string.beacons);
-        adapter = new BeaconAdapter(getActivity(), new ArrayList<Beacon>());
+
+        if(!isVisible()) {
+            adapter = new BeaconAdapter(getActivity(), new ArrayList<Beacon>());
+            loadItems();
+        }
+
         list.setAdapter(adapter);
         list.setEmptyView(empty);
         list.setOnItemClickListener(this);
         list.setOnItemLongClickListener(this);
-        loadItems();
     }
 
     private void loadItems() {

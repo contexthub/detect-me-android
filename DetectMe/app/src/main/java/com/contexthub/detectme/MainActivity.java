@@ -15,26 +15,30 @@ import com.contexthub.detectme.fragments.EditBeaconFragment;
 
 public class MainActivity extends ActionBarActivity implements BeaconListFragment.Listener, FragmentManager.OnBackStackChangedListener {
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-            setProgressBarIndeterminate(true);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        setProgressBarIndeterminate(true);
 
-            if(savedInstanceState == null) {
-                getSupportFragmentManager().beginTransaction()
-                        .replace(android.R.id.content, new BeaconListFragment())
-                        .commit();
-                getSupportFragmentManager().addOnBackStackChangedListener(this);
-            }
-        }
+        getSupportFragmentManager().addOnBackStackChangedListener(this);
 
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            getMenuInflater().inflate(R.menu.main, menu);
-            return true;
+        if(savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(android.R.id.content, new BeaconListFragment())
+                    .commit();
         }
+        else {
+            setUpNavigationVisibility();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
@@ -75,8 +79,12 @@ public class MainActivity extends ActionBarActivity implements BeaconListFragmen
 
     @Override
     public void onBackStackChanged() {
+        setUpNavigationVisibility();
+        supportInvalidateOptionsMenu();
+    }
+
+    private void setUpNavigationVisibility() {
         boolean hasItems = getSupportFragmentManager().getBackStackEntryCount() > 0;
         getSupportActionBar().setDisplayHomeAsUpEnabled(hasItems);
-        supportInvalidateOptionsMenu();
     }
 }
