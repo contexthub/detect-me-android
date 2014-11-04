@@ -259,9 +259,17 @@ public class BeaconListFragment extends Fragment implements Callback<List<Beacon
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    // get current scroll position
+                    int scrollPosition = list.getFirstVisiblePosition();
+                    View view = list.getChildAt(0);
+                    int top = (view == null) ? 0 : view.getTop();
+
                     adapter.clear();
                     adapter.addAll(ProximityService.getInstance().getMonitoredBeacons());
                     adapter.notifyDataSetChanged();
+
+                    // restore scroll position after updating the list
+                    list.setSelectionFromTop(scrollPosition, top);
                 }
             });
         }
