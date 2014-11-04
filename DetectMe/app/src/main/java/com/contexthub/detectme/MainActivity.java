@@ -1,8 +1,8 @@
 package com.contexthub.detectme;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -13,12 +13,13 @@ import com.contexthub.detectme.fragments.BeaconListFragment;
 import com.contexthub.detectme.fragments.EditBeaconFragment;
 
 
-public class MainActivity extends FragmentActivity implements BeaconListFragment.Listener, FragmentManager.OnBackStackChangedListener {
+public class MainActivity extends ActionBarActivity implements BeaconListFragment.Listener, FragmentManager.OnBackStackChangedListener {
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
             super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
             setProgressBarIndeterminate(true);
 
             if(savedInstanceState == null) {
@@ -74,6 +75,8 @@ public class MainActivity extends FragmentActivity implements BeaconListFragment
 
     @Override
     public void onBackStackChanged() {
+        boolean hasItems = getSupportFragmentManager().getBackStackEntryCount() > 0;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(hasItems);
         supportInvalidateOptionsMenu();
     }
 }

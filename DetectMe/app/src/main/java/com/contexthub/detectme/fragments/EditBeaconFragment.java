@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -70,13 +72,15 @@ public class EditBeaconFragment extends Fragment implements Callback<Beacon> {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        getActivity().getActionBar().setTitle(R.string.edit_beacon);
+        ActionBar actionBar = ((ActionBarActivity) getActivity()).getSupportActionBar();
         if(getArguments() != null && getArguments().containsKey(ARG_BEACON) && getArguments().containsKey(ARG_BEACON_ID)) {
+            actionBar.setTitle(R.string.edit_beacon);
             beaconId = getArguments().getLong(ARG_BEACON_ID);
-            beacon = Parcels.unwrap(getArguments().getParcelable(ARG_BEACON));
+            beacon = getArguments().getParcelable(ARG_BEACON);
             bindPerson();
         }
         else {
+            actionBar.setTitle(R.string.add_beacon);
             beacon = new Beacon();
         }
     }
@@ -96,6 +100,9 @@ public class EditBeaconFragment extends Fragment implements Callback<Beacon> {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case android.R.id.home:
+                getFragmentManager().popBackStack();
+                return true;
             case R.id.action_save:
                 hideSoftKeyboard();
                 saveBeacon();

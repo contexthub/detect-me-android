@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,7 +93,7 @@ public class BeaconListFragment extends Fragment implements Callback<List<Beacon
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        getActivity().getActionBar().setTitle(R.string.beacons);
+        ((ActionBarActivity) getActivity()).getSupportActionBar().setTitle(R.string.beacons);
         adapter = new BeaconAdapter(getActivity(), new ArrayList<Beacon>());
         list.setAdapter(adapter);
         list.setEmptyView(empty);

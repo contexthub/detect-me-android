@@ -20,6 +20,7 @@
     <string name="about_text">This sample application uses ContextHub to create/retrieve/update/delete beacons on the server and then respond to beacon in and out events. ContextHub takes care of setting up and monitoring beacons automatically after creation and synchronization.</string>
     <string name="copyright_info">Copyright © 2014 ChaiOne\nAll Rights Reserved</string>
     <string name="version_info">Version %1$s (%2$s)</string>
+    <string name="add_beacon">Add Beacon</string>
     <string name="edit_beacon">Edit Beacon</string>
     <string name="save">Save</string>
     <string name="beacon_created">Beacon created</string>
